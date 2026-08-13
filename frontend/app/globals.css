@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-paper text-ink antialiased;
+  }
+  body {
+    @apply font-sans text-[14px] leading-relaxed;
+  }
+  h1, h2, h3 {
+    @apply font-display;
+  }
+  /* Visible keyboard focus everywhere - accessibility floor, not optional */
+  :focus-visible {
+    outline: 2px solid #3B2FA3;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-paperRaised border border-line rounded-lg shadow-card;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded bg-lens text-white px-3.5 py-2 text-sm font-medium hover:bg-lens-soft transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded border border-line bg-paperRaised text-ink px-3.5 py-2 text-sm font-medium hover:bg-paper transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .input {
+    @apply w-full rounded border border-line bg-paperRaised px-3 py-2 text-sm placeholder:text-ink-faint focus:border-lens focus:ring-1 focus:ring-lens outline-none;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-sm px-2 py-0.5 text-xs font-medium;
+  }
+}
