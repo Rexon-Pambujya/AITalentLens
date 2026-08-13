@@ -29,7 +29,7 @@ module.exports = {
       },
       fontFamily: {
         // Real deployments should swap these for next/font/google
-        // (Fraunces / Inter / IBM Plex Mono) - see DESIGN.md. System stacks
+        // (Fraunces / Inter / IBM Plex Mono) - see docs/design-decisions.md. System stacks
         // here approximate the intended feel without a network font fetch.
         display: ['Iowan Old Style', 'Palatino Linotype', 'Georgia', 'ui-serif', 'serif'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'ui-sans-serif', 'sans-serif'],

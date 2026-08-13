@@ -1,0 +1,883 @@
+{
+  "info": {
+    "_postman_id": "dc3b0928-aef2-49f1-870c-01eaeebc4b90",
+    "name": "TalentLens AI",
+    "description": "AI-powered candidate intelligence for faster, fairer hiring.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api/v1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organization_name\": \"Organization Name\",\n  \"email\": \"user@example.com\",\n  \"password\": \"Password\",\n  \"name\": \"Name\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"Password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "candidates",
+      "item": [
+        {
+          "name": "List All Candidates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Candidate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates/:candidate_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates",
+                ":candidate_id"
+              ],
+              "variable": [
+                {
+                  "key": "candidate_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Pipeline Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates/:candidate_id/pipeline/:job_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates",
+                ":candidate_id",
+                "pipeline",
+                ":job_id"
+              ],
+              "variable": [
+                {
+                  "key": "candidate_id",
+                  "value": "REPLACE_ME"
+                },
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"NEW\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates/:candidate_id/notes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates",
+                ":candidate_id",
+                "notes"
+              ],
+              "variable": [
+                {
+                  "key": "candidate_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": \"Note\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Notes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates/:candidate_id/notes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates",
+                ":candidate_id",
+                "notes"
+              ],
+              "variable": [
+                {
+                  "key": "candidate_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "health"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Readiness",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/health/ready",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "health",
+                "ready"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "jobs",
+      "item": [
+        {
+          "name": "Create Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs"
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Title\",\n  \"department\": \"string\",\n  \"location\": \"string\",\n  \"employment_type\": \"string\",\n  \"description\": \"Description\",\n  \"requirements\": [\n    {\n      \"skill\": \"Skill\",\n      \"importance\": 1.0,\n      \"required\": true,\n      \"minimum_years\": 0.0\n    }\n  ],\n  \"scoring_weights\": {\n    \"skills\": 0.4,\n    \"semantic\": 0.2,\n    \"experience\": 0.2,\n    \"education\": 0.1,\n    \"projects\": 0.1\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Jobs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Job",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Job",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"string\",\n  \"department\": \"string\",\n  \"location\": \"string\",\n  \"employment_type\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"DRAFT\",\n  \"seniority\": \"string\",\n  \"min_experience_years\": 0.0,\n  \"preferred_experience_years\": 0.0,\n  \"scoring_weights\": {\n    \"skills\": 0.4,\n    \"semantic\": 0.2,\n    \"experience\": 0.2,\n    \"education\": 0.1,\n    \"projects\": 0.1\n  },\n  \"requirements\": [\n    {\n      \"skill\": \"Skill\",\n      \"importance\": 1.0,\n      \"required\": true,\n      \"minimum_years\": 0.0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Archive Job",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Analyze Job Description",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id/analyze",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id",
+                "analyze"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "matching",
+      "item": [
+        {
+          "name": "Match Candidate To Job",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/candidates/:candidate_id/match/:job_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "candidates",
+                ":candidate_id",
+                "match",
+                ":job_id"
+              ],
+              "variable": [
+                {
+                  "key": "candidate_id",
+                  "value": "REPLACE_ME"
+                },
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "rankings",
+      "item": [
+        {
+          "name": "Get Job Ranking",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id/ranking",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id",
+                "ranking"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Job Candidates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id/candidates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id",
+                "candidates"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recalculate Job Matches",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/jobs/:job_id/recalculate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "jobs",
+                ":job_id",
+                "recalculate"
+              ],
+              "variable": [
+                {
+                  "key": "job_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "resumes",
+      "item": [
+        {
+          "name": "Upload Resumes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/resumes/upload",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "resumes",
+                "upload"
+              ],
+              "variable": []
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Resume",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/resumes/:resume_id",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "resumes",
+                ":resume_id"
+              ],
+              "variable": [
+                {
+                  "key": "resume_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Resume Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/resumes/:resume_id/status",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "resumes",
+                ":resume_id",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "resume_id",
+                  "value": "REPLACE_ME"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "root",
+      "item": [
+        {
+          "name": "Root",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [],
+              "variable": []
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "Search Candidates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/search/candidates",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "search",
+                "candidates"
+              ],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"Query\",\n  \"limit\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

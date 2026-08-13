@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * ScoreRing - the product's one signature visual element (see DESIGN.md).
+ * ScoreRing - the product's one signature visual element (see docs/design-decisions.md).
  * Rendered as a set of aperture "blades" that close in around the score,
  * echoing "Lens" in the product name, rather than a generic donut chart.
  */

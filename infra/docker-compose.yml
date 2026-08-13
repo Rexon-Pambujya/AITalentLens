@@ -9,7 +9,7 @@ services:
   postgres:
     # pgvector/pgvector ships Postgres with the pgvector extension
     # pre-built - this is the same combination (Postgres 16 + pgvector)
-    # verified directly in this build (see PROGRESS.md).
+    # verified directly in this build (see docs/database.md).
     image: pgvector/pgvector:pg16
     restart: unless-stopped
     environment:
