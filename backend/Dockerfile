@@ -18,6 +18,8 @@ RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 
 COPY . .
 
+RUN chmod +x scripts/start.sh
+
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
 USER appuser
 

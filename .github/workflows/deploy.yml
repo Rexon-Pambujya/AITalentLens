@@ -1,0 +1,18 @@
+name: Deploy backend
+
+# Runs after CI finishes on main, and only triggers the Render deploy if CI
+# passed - Vercel deploys the frontend on its own via its native GitHub
+# integration, so no frontend step is needed here.
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types: [completed]
+
+jobs:
+  deploy-backend:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy hook
+        run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"

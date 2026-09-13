@@ -24,7 +24,9 @@ class S3StorageBackend(StorageBackend):
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
             region_name=settings.AWS_REGION,
-            config=BotoConfig(signature_version="s3v4"),
+            # path-style addressing: required by Cloudflare R2 (the free-tier
+            # deploy target); also works fine against MinIO/real AWS.
+            config=BotoConfig(signature_version="s3v4", s3={"addressing_style": "path"}),
         )
         self._bucket = settings.S3_BUCKET
 

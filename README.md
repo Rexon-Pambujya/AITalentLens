@@ -146,6 +146,7 @@ the suite.
 | [`docs/api.md`](docs/api.md) | How to use the Swagger/ReDoc/Postman docs, auth flow, endpoint groups |
 | [`docs/api/openapi.json`](docs/api/openapi.json), [`docs/api/postman_collection.json`](docs/api/postman_collection.json) | Machine-readable API spec + importable Postman collection |
 | [`docs/design-decisions.md`](docs/design-decisions.md) | Why matching is on-demand not automatic, why scoring is deterministic with LLM-only narrative, tenant-isolation approach, UI design system, explicit assumptions |
+| [`docs/deployment.md`](docs/deployment.md) | Deploying the stack for free (Render + Vercel + Supabase + Upstash + Cloudflare R2), GitHub Actions CI/auto-deploy |
 
 ## Known gaps
 

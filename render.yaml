@@ -1,0 +1,57 @@
+# Render Blueprint for the free-tier deploy of the TalentLens backend.
+# Import this repo at https://dashboard.render.com/blueprints and Render
+# will create the service below. Values marked `sync: false` are secrets -
+# set them in the Render dashboard after the first deploy, not here.
+#
+# The API and Celery worker run in one free Web Service (see
+# backend/scripts/start.sh for why) - this is a deploy-only arrangement;
+# infra/docker-compose.yml is unchanged for local dev.
+services:
+  - type: web
+    name: talentlens-backend
+    runtime: docker
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    dockerCommand: ./scripts/start.sh
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: STORAGE_BACKEND
+        value: s3
+      - key: AWS_REGION
+        value: auto
+      - key: LLM_PROVIDER
+        value: groq
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: EMBEDDING_DIMENSIONS
+        value: "1536"
+      # --- Secrets: fill these in on the Render dashboard ---
+      - key: JWT_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_SYNC
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: CELERY_BROKER_URL
+        sync: false
+      - key: CELERY_RESULT_BACKEND
+        sync: false
+      - key: S3_ENDPOINT
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
